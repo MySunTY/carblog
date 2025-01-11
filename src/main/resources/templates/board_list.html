@@ -1,18 +1,23 @@
-<div>
-  <table>
-    <thead>
+<html layout:decorate="~{layout}">
+  <div layout:fragment="content" class="container my-3">
+    <table class="table">
+      <thead>
       <tr>
-        <th>제목</th>
+        <th>번호</th>
+        <th style="width:60%">제목</th>
         <th>작성일시</th>
-        <th>내용</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr th:each="board : ${boardList}">
-        <td th:text="${board.title}"></td>
+      </thead>
+      <tbody>
+      <tr th:each="board  , loop: ${boardList}">
+        <td th:text="${loop.count}"></td>
+        <td>
+          <a th:href="@{|/board/detail/${board.id}|}" th:text="${board.title}"></a>
+        </td>
         <td th:text="${board.createTime}"></td>
-        <td>[[${board.content}]]</td>
       </tr>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+    <a th:href="@{/board/create}" th:text="글쓰기" class="btn btn-lg btn-success"></a>
+  </div>
+</html>
