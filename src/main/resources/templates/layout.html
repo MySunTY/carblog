@@ -6,11 +6,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
 </head>
 <body>
-  <div class="container mt-3 text-center text-bg-success p-3">
-      <h2>BMW 동호회</h2>
+  <div class="container mt-3">
+      <h2 class ="text-center text-bg-success p-3">BMW 동호회</h2>
+      <th:block layout:fragment="content"></th:block>
   </div>
-  <!-- 컨텐츠시작 -->
-  <th:block layout:fragment="content"></th:block>
-  <!-- 컨텐츠종료 -->
+
 </body>
 </html>

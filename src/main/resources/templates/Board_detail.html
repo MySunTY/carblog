@@ -1,6 +1,23 @@
 <html layout:decorate="~{layout}">
-  <div layout:fragment="content" class="container mt-3">
-    <div th:text="${boardDTO.title}"></div>
-    <div th:text="${boardDTO.content}"></div>
+  <div layout:fragment="content">
+    <div class="container mt-3 border">
+      <h3 class="text-center border-bottom p-3" th:text="${boardDTO.title}"></h3>
+      <div th:text="${boardDTO.content}" class="h5 p-3"></div>
+    </div>
+    <a th:href="@{/board/list}" class="btn btn-primary mt-3">목록보기</a>
+    <!-- 댓글 작성-->
+    <div class="container mt-3">
+      <form method="POST" th:action="@{|/reply/create/${boardDTO.id}|}">
+        <label class="form-label" for="content"></label>
+        <textarea class="form-control" name="content" id="content" rows="5"></textarea>
+        <input type="hidden" name="boardDTO" id="boardDTO" value="${boardDTO.id}">
+        <button type="submit" class="btn btn-success mt-3">답변작성</button>
+      </form>
+    </div>
+    <!-- 댓글 확인 -->
+    <div class="container mt-3" th:each="reply : ${boardDTO.replyDTOList}">
+      <div class="alert alert-primary" role="alert" th:text="${reply.content}"></div>
+    </div>
+
   </div>
 </html>

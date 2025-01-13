@@ -1,10 +1,12 @@
 package com.example.CarBlog_2.Board;
 
+import com.example.CarBlog_2.Reply.ReplyDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,4 +23,8 @@ public class BoardDTO {
     private String content;
 
     private LocalDateTime createTime;
+
+    @OneToMany(mappedBy = "boardDTO" ,cascade = CascadeType.REMOVE)
+    private List<ReplyDTO> replyDTOList;
+
 }
