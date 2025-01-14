@@ -12,9 +12,5 @@ public class HomeController {
         return "redirect:/board/list";
     }
 
-    @GetMapping("/jump")
-    @ResponseBody
-    public String jump(){
-        return "점프 투 스프링부트";
-    }
+
 }
