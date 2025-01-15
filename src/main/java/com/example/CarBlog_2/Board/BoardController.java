@@ -1,6 +1,7 @@
 package com.example.CarBlog_2.Board;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,10 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board/list")
-    public String getList(Model model){
+    public String getList(Model model, @RequestParam(value="page", defaultValue = "0") int page){
         String title = "목록보기";
-        List<BoardDTO> boardList = this.boardService.getList();
-        model.addAttribute("boardList",boardList);
+        Page<BoardDTO> paging = this.boardService.getList(page);
+        model.addAttribute("paging",paging);
         model.addAttribute("title",title);
         return "board_list.html";
     }
