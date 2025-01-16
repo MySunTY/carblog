@@ -1,14 +1,16 @@
 <html layout:decorate="~{layout}">
   <div layout:fragment="content" class="container mt-3">
     <h2>여기는 회원가입페이지입니다</h2>
-    <form action="@{/user/register}" method="post" onsubmit="return passCheck()">
+
+    <form th:action="@{/user/register}" method="post" onsubmit="return passCheck()" th:object="${userCreateForm}">
+      <div th:replace="~{form_errors :: formErrorFragment}"></div>
       <div class="mt-3">
         <label for="username" class="form-label">USERNAME</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" required>
+        <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요" th:field="*{username}">
       </div>
       <div class="mt-3">
         <label for="password" class="form-label">PASSWORD</label>
-        <input type="password" class="form-control" required id="password" name="password" placeholder="비밀번호를 입력하세요">
+        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="비밀번호를 입력하세요">
       </div>
       <div class="mt-3">
         <label for="password2" class="form-label">PASSWORD확인</label>
@@ -16,7 +18,7 @@
       </div>
       <div class="mt-3">
         <label for="email" class="form-label">EMAIL</label>
-        <input type="email" class="form-control" required id="email" name="email" placeholder="이메일을 입력하세요">
+        <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="이메일을 입력하세요">
       </div>
       <div class="mt-3">
         <input type="submit" class="btn btn-primary" value="가입하기">
