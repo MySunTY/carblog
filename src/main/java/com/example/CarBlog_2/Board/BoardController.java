@@ -76,5 +76,13 @@ public class BoardController {
         return String.format("redirect:/board/detail/%s",id);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/board/delete/{id}")
+    public String boardDelete(@PathVariable("id")Long id){
+        BoardDTO boardDTO = this.boardService.getBoard(id);
+        this.boardService.boardDelete(boardDTO);
+        return "redirect:/";
+    }
+
 
 }

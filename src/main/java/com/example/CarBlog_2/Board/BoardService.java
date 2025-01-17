@@ -53,4 +53,8 @@ public class BoardService {
 
 
     }
+
+    public void boardDelete(BoardDTO boardDTO){
+        this.boardRepository.delete(boardDTO);
+    }
 }
