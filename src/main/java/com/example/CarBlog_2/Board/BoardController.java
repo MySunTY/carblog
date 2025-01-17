@@ -58,5 +58,23 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/board/modify/{id}")
+    public String boardModify(@PathVariable("id") Long id, Model model){
+        String title = "게시글 수정 페이지";
+        model.addAttribute("title",title);
+        BoardDTO boardDTO = this.boardService.getBoard(id);
+        model.addAttribute("boardDTO",boardDTO);
+        return "board_modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/board/modify/{id}")
+    public String boardModify(@PathVariable("id")Long id,  @RequestParam String title , @RequestParam String content){
+        BoardDTO boardDTO = this.boardService.getBoard(id);
+        this.boardService.boardModify(boardDTO, title, content);
+        return String.format("redirect:/board/detail/%s",id);
+    }
+
 
 }

@@ -45,4 +45,12 @@ public class BoardService {
         boardDTO.setUsername(userDTO);
         this.boardRepository.save(boardDTO);
     }
+
+    public void boardModify(BoardDTO boardDTO , String title, String content){
+        boardDTO.setTitle(title);
+        boardDTO.setContent(content);
+        this.boardRepository.save(boardDTO);
+
+
+    }
 }

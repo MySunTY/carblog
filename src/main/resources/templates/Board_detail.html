@@ -17,7 +17,7 @@
       <a th:href="@{|/board/modify/${boardDTO.id}|}" class="btn btn-success me-3" sec:authorize="isAuthenticated()"
       th:if="${boardDTO.username != null and #authentication.getPrincipal().getUsername() == boardDTO.username.username}" th:text="수정하기"></a>
       <a th:href="@{|/board/delete/${boardDTO.id}|}" class="btn btn-danger me-3" sec:authorize="isAuthenticated()"
-       th:if="${boardDTO.username != null and #authentication.getPrincipal().getUsername() == boardDTO.username.username}" th:text="수정하기"></a>
+       th:if="${boardDTO.username != null and #authentication.getPrincipal().getUsername() == boardDTO.username.username}" th:text="삭제하기"></a>
       <a th:href="@{/board/list}" class="btn btn-primary">목록보기</a>
     </div>
 
@@ -42,9 +42,9 @@
           </div>
           <div th:text="${#temporals.format(reply.createTime, 'yyyy-MM-dd HH:mm')}"></div>
         </div>
-        <a th:href="@{|/reply/modify/${boardDTO.id}|}" class="btn btn-sm btn-success me-3" sec:authorize="isAuthenticated()"
+        <a th:href="@{|/reply/modify/${boardDTO.id}|}" class="btn btn-sm btn-success me-3 d-flex align-items-center" sec:authorize="isAuthenticated()"
            th:if="${reply.username != null and #authentication.getPrincipal().getUsername() == reply.username.username}" th:text="수정"></a>
-        <a th:href="@{|/reply/delete/${boardDTO.id}|}" class="btn btn-sm btn-danger" sec:authorize="isAuthenticated()"
+        <a th:href="@{|/reply/delete/${boardDTO.id}|}" class="btn btn-sm btn-danger d-flex align-items-center" sec:authorize="isAuthenticated()"
            th:if="${reply.username != null and #authentication.getPrincipal().getUsername() == reply.username.username}" th:text="삭제"></a>
       </div>
 
