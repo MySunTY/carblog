@@ -5,6 +5,7 @@
       <tr>
         <th>번호</th>
         <th style="width:60%">제목</th>
+        <th>작성자</th>
         <th>작성일시</th>
       </tr>
       </thead>
@@ -18,6 +19,7 @@
 
           </span>
         </td>
+        <td><span th:if="${board.username != null}" th:text="${board.username.username}"></span></td>
         <td th:text="${#temporals.format(board.createTime , 'yyyy-MM-dd')}"></td>
       </tr>
       </tbody>

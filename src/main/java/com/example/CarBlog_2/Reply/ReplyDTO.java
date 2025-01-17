@@ -1,6 +1,7 @@
 package com.example.CarBlog_2.Reply;
 
 import com.example.CarBlog_2.Board.BoardDTO;
+import com.example.CarBlog_2.User.UserDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,5 +24,8 @@ public class ReplyDTO {
 
     @ManyToOne
     private BoardDTO boardDTO;
+
+    @ManyToOne
+    private UserDTO username;
 }
 

@@ -1,6 +1,7 @@
 package com.example.CarBlog_2.Board;
 
 import com.example.CarBlog_2.DataNotFoundException;
+import com.example.CarBlog_2.User.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,11 +37,12 @@ public class BoardService {
 
     }
 
-    public void createBoard(String title, String content){
+    public void createBoard(String title, String content , UserDTO userDTO){
         BoardDTO boardDTO = new BoardDTO();
         boardDTO.setTitle(title);
         boardDTO.setContent(content);
         boardDTO.setCreateTime(LocalDateTime.now());
+        boardDTO.setUsername(userDTO);
         this.boardRepository.save(boardDTO);
     }
 }
